@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2 v-bind:class="{active:isactive, line:isline}">{{message}}</h2>
+        <button v-on:click='add'></button>
+        <!-- 动态绑定style -->
+        <h2 :style="{fontSize:fontSize+'px',backgroundColor:colorer}">你好啊</h2>
+        <h3 :style="getStyle()">你好啊</h3>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                isactive: true,
+                isline: false,
+                fontSize: 100,
+                colorer: 'red',
+
+            },
+            methods: {
+                add: function () {
+                    this.isactive = !this.isactive;
+                },
+                getStyle: function () {
+                    return { fontSize: this.fontSize + 'px', backgroundColor: this.colorer }
+                }
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>

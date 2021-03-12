@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const nums = [10, 20, 110, 40, 50]
+        // filter函数使用
+        let newnums = nums.filter(function (n) {
+            return n < 100
+        })
+        console.log(newnums);
+        // map函数使用
+        let new2nums = newnums.map(function (n) {
+            return n * 2
+        })
+        console.log(new2nums);
+
+        // reduce函数的使用
+        // reduce作用对数组在所有的内容进行汇总
+        let total = new2nums.reduce(function (prevalue, n) {
+            return prevalue + n
+        }, 60)
+        console.log(total);
+
+        const num = [10, 20, 110, 40, 50]
+        // 将数组里小于100的数筛选出来
+        let naw = []
+        for (let n of num) {
+            if (n < 100) {
+                naw.push(n)
+            }
+        }
+        console.log(naw);
+        // 将数组小于100的数字转化全部乘以2
+        let naw2 = []
+        for (let n of num) {
+            naw2.push(n * 2)
+        }
+        console.log(naw2);
+        // 将所有nam2数字相加，
+        let totl = 0
+        for (let n of naw2) {
+            totl += n
+        }
+        console.log(totl);
+
+    </script>
+
+</body>
+
+</html>

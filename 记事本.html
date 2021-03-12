@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xiaohei</title>
+    <style>
+        .tdoapp {
+            margin: 50px auto;
+            background-color: pink;
+            width: 400px;
+            height: 600px;
+            list-style: none;
+        }
+
+        .header {
+            width: 300px;
+            height: 200px;
+        }
+
+        .new-todo {
+            height: 30px;
+            width: 250px;
+
+        }
+
+        li {
+            height: 30px;
+            width: 200px;
+            list-style: none;
+        }
+
+        .destroy {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer {
+            position: relative;
+
+        }
+
+        .clear-completed {
+            position: absolute;
+            right: 2px;
+        }
+
+        .todo-count {
+            position: absolute;
+            left: 2px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <section id="tidoapp" class="tdoapp">
+        <!-- 输入区 -->
+        <header class="header">
+            <h1>小黑记事本</h1>
+            <input type="text" @keyup.enter="add" v-model="inputValue" autofocus="autofocus" autocomplete="off"
+                placeholder="输入东西" class="new-todo">
+        </header>
+        <section class="main">
+            <ul class="todo-list">
+                <li class="todo" v-for="(item,index) in list">
+                    <div class="view">
+                        <span class="index">{{index+1}}</span>
+                        <label>{{item}}</label>
+                        <button class="destroy" @click="remove(index)"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <footer class="footer">
+            <span class="todo-count">
+                <strong>{{list.length}}</strong>
+                "items left"
+            </span>
+            <button class="clear-completed" @click="clear">
+                clear
+            </button>
+        </footer>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#tidoapp",
+            data: {
+                list: ["吃饭", "睡觉", "打豆豆"],
+                inputValue: "好好学习"
+            },
+            methods: {
+                add: function () {
+                    this.list.push(this.inputValue)
+                },
+                remove: function (index) {
+                    this.list.splice(index, 1)
+                },
+                clear: function () {
+                    this.list = [];
+                }
+
+            },
+        })
+    </script>
+</body>
+
+</html>
